@@ -47,8 +47,17 @@ function App(props) {
     }
   });
 
+  const handleDeleteAll = (e) => {
+    e.preventDefault();
+    const task_map = Array.from(tasks).filter(task => {
+      if (task.status != 'completed') return task;
+    })
+
+    setTasks(task_map);
+  }
+
   let completeCount = completedCount(tasks);
-  let del_btn = <button className="delete_all_btn"><MdDeleteOutline/> delete all</button>
+  let del_btn = <button onClick={handleDeleteAll} className="delete_all_btn"><MdDeleteOutline/> delete all</button>
 
   return (
     <div className="app">

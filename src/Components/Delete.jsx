@@ -16,11 +16,23 @@ const Button = styled.button`
     }
 `
 
-const Delete = (props) => {
+const Delete = ({tasks, setTasks}) => {
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        let uuid = e.target.closest('li').dataset.uuid;
+        const task_map = tasks.filter(task => {
+            if (task.uuid != uuid) return task;
+        })
+        setTasks(task_map);
+    }
+
   return (
-      <Button>
-          <MdDeleteOutline className='delete_icon'/>
-      </Button>
+    <Button
+        onClick={handleDelete}
+    >
+        <MdDeleteOutline className='delete_icon'/>
+    </Button>
   )
 }
 

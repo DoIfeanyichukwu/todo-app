@@ -64,7 +64,7 @@ const Task = ({task, uuid, tab, strike, tasks, setTasks}) => {
             {task}
         </Label>
         {
-            tab == 'completed' ? <Delete /> : null
+            tab == 'completed' ? <Delete tasks={tasks} setTasks={setTasks}/> : null
         }
         
     </Li>

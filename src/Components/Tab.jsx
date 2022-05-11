@@ -14,19 +14,22 @@ const Button = styled.button`
     display: block;
 `
 
-const handleClick = (e, callback) => {
-  e.preventDefault();
-  callback(e.target.dataset.status.toLowerCase());
-  document.querySelector('.active').classList.remove('active');
-  e.target.classList.add('active');
-}
+
 
 const Tab = ({section, className, setTab}) => {
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setTab(e.target.dataset.status.toLowerCase());
+    document.querySelector('.active').classList.remove('active');
+    e.target.classList.add('active');
+  }
+
   return (
     <Button 
       data-status={section == 'All' ? '': section}
       className={`${className} tab`}
-      onClick={(e) => handleClick(e, setTab)}
+      onClick={handleClick}
     >{section}</Button>
   )
 }

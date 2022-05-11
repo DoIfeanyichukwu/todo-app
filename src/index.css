@@ -44,7 +44,7 @@
 .tab::after {
   visibility: hidden;
   opacity: 0;
-  transition: .3s;
+  transition: all .3s;
 }
 
 .tab:hover::after {
@@ -88,10 +88,40 @@
 .tasks {
   list-style: none;
   margin-inline: .5rem;
-  max-height: 50vh;
-  overflow-y: scroll;
+  block-size: 50vh;
+  overflow-y: auto;
 }
 
 .task_item + .task_item {
   margin-block-start: 27px;
+}
+
+.nothing {
+  color: #828282;
+  display: block;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.delete_all {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-inline: .5rem;
+}
+
+.delete_all_btn {
+  color: #fff;
+  font-family: 'Montserrat', serif;
+  font-weight: 600;
+  font-size: 12px;
+  background-color: #eb5757;
+  border-radius: 4px;
+  padding-inline: 41px 26px;
+  padding-block: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5.5px;
 }

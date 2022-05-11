@@ -34,24 +34,41 @@ const Input = styled.input`
 
 const AddTask = ({setTasks, tasks}) => {
 
-  const handleAdd = (e) => {
-    e.preventDefault();
-    let obj = {
+  const Functionality = () => {
+    let task = {
       task: main_input.value,
       status: 'active',
-      uuid: uuidv4()
+      uuid: uuidv4(),
+      date: Date.now()
     }
     const taskMap = Array.from(tasks)
-    taskMap.push(obj);
+    taskMap.push(task);
     setTasks(taskMap);
     main_input.value = '';
+  }
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    Functionality()
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.code == "Enter") {
+      Functionality()
+    }
   }
 
   return (
   <section className="add_task">
     <div className="add_task_input">
       <label htmlFor="main_input" className='hidden'>add details</label>
-      <Input type="text" id='main_input' placeholder='add details' />
+      <Input 
+        autoFocus
+        type="text" 
+        id='main_input' 
+        placeholder='add details'
+        onKeyDown={handleKeyDown} 
+      />
     </div>
     <Button
       onClick={handleAdd}

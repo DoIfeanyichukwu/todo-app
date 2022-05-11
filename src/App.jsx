@@ -5,6 +5,7 @@ import TabSection from './Components/TabSection'
 import AddTask from './Components/AddTask'
 import Tasks from './Components/Tasks'
 import Task from './Components/Task'
+import { MdDeleteOutline } from 'react-icons/md'
 
 const H1 = styled.h1`
   font-weight: 700;
@@ -25,10 +26,19 @@ const todos = [
 
 ]
 
+function completedCount(arr = null) {
+  if (!arr.length) return 0;
+  let count = arr.filter(task => {
+    if (task.status == 'completed') return 1;
+  }).reduce((a,b) => a + b, 0);
+
+  return count;
+}
+
 function App(props) {
 
-  const [tab, setTab] = useState('');
-  const [tasks, setTasks] = useState(todos);
+  const [tab, setTab] = useState('active');
+  const [tasks, setTasks] = useState([]);
   const task_map = Array.from(tasks).map(task => {
     if (task.status.includes(tab))
     {
@@ -37,6 +47,8 @@ function App(props) {
     }
   });
 
+  let completeCount = completedCount(tasks);
+  let del_btn = <button className="delete_all_btn"><MdDeleteOutline/> delete all</button>
 
   return (
     <div className="app">
@@ -47,8 +59,11 @@ function App(props) {
         <TabSection setTab={setTab}/>
         {tab == 'completed' ? null: <AddTask tasks={tasks} setTasks={setTasks}/>}
         <Tasks>
-          {task_map}
+          {completeCount <= 0 && tab == 'completed' ? <span className='nothing'>Nothing done yet...</span> : task_map}
         </Tasks>
+        <div className="delete_all">
+          {tab == 'completed' ? del_btn: null}
+        </div>
       </main>
     </div>
   )

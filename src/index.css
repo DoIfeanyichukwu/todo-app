@@ -8,6 +8,18 @@
   margin: 0;
 }
 
+.hidden {
+  border: 0;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; 
+} 
+
 .app {
   margin-block-start: 32px;
   max-inline-size: 608px;
@@ -61,4 +73,13 @@
   background-color: #2f80ed;
   border-radius: 4px 4px 0 0;
   transition: .3s;
+}
+
+
+.add_task {
+  display: flex;
+  gap: 25px;
+}
+.add_task_input {
+  flex: 2;
 }

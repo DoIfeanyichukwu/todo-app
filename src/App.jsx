@@ -1,6 +1,7 @@
 // import logo from './logo.svg'
 import styled from 'styled-components'
 import TabSection from './Components/TabSection'
+import AddTask from './Components/AddTask'
 
 const H1 = styled.h1`
   font-weight: 700;
@@ -23,6 +24,7 @@ function App(props) {
       </header>
       <main className="main">
         <TabSection />
+        <AddTask />
       </main>
     </div>
   )

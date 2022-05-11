@@ -17,12 +17,27 @@ const H1 = styled.h1`
   text-align: center;
   justify-content: center;
 `
+const todos = [
+  {task: 'walk the dog', uuid: 'ab', status: 'active'},
+  {task: 'go shopping', uuid: 'abc', status: 'completed'},
+  {task: 'practice tests', uuid: 'abe', status: 'completed'},
+  {task: 'swimming lessons', uuid: 'abg', status: 'active'},
+
+]
 
 function App(props) {
 
-  const [tab, setTab] = useState('all');
+  const [tab, setTab] = useState('');
   const [currentTask, setCurrentTast] = useState('');
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(todos);
+  const task_map = Array.from(tasks).map(task => {
+    if (task.status.includes(tab))
+    {
+      if (task.status == 'completed') return <Task uuid={task.uuid} strike={true} task={task.task} key={task.uuid} tab={tab} tasks={tasks} setTasks={setTasks}/>
+      return <Task uuid={task.uuid} task={task.task} key={task.uuid} tab={tab} tasks={tasks} setTasks={setTasks}/>
+    }
+  });
+
 
   return (
     <div className="app">
@@ -30,12 +45,10 @@ function App(props) {
         <H1>#todo</H1>
       </header>
       <main className="main">
-        <TabSection />
-        <AddTask />
+        <TabSection setTab={setTab}/>
+        {tab == 'completed' ? null: <AddTask />}
         <Tasks>
-          <Task task={'brush teeth'} tab="completed"/>
-          <Task task={'brush teeth'} tab="completed"/>
-          <Task task={'bathing'} tab="completed"/>
+          {task_map}
         </Tasks>
       </main>
     </div>

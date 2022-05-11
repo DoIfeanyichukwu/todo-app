@@ -14,9 +14,20 @@ const Button = styled.button`
     display: block;
 `
 
-const Tab = ({section, className}) => {
+const handleClick = (e, callback) => {
+  e.preventDefault();
+  callback(e.target.dataset.status.toLowerCase());
+  document.querySelector('.active').classList.remove('active');
+  e.target.classList.add('active');
+}
+
+const Tab = ({section, className, setTab}) => {
   return (
-    <Button className={`${className} tab`}>{section}</Button>
+    <Button 
+      data-status={section == 'All' ? '': section}
+      className={`${className} tab`}
+      onClick={(e) => handleClick(e, setTab)}
+    >{section}</Button>
   )
 }
 

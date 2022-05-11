@@ -87,6 +87,7 @@
 
 .tasks {
   list-style: none;
+  margin-inline: .5rem;
 }
 
 .task_item + .task_item {

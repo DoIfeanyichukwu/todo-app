@@ -31,7 +31,7 @@ const Input = styled.input`
     border: 1px solid #bdbdbd;
 `
 
-const AddTask = (props) => {
+const AddTask = ({handleInput}) => {
   return (
     <section className="add_task">
         <div className="add_task_input">

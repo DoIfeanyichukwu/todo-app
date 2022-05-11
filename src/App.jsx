@@ -20,6 +20,9 @@ const H1 = styled.h1`
 
 function App(props) {
 
+  const [tab, setTab] = useState('all');
+  const [currentTask, setCurrentTast] = useState('');
+  const [tasks, setTasks] = useState([]);
 
   return (
     <div className="app">
@@ -32,6 +35,7 @@ function App(props) {
         <Tasks>
           <Task task={'brush teeth'} tab="completed"/>
           <Task task={'brush teeth'} tab="completed"/>
+          <Task task={'bathing'} tab="completed"/>
         </Tasks>
       </main>
     </div>

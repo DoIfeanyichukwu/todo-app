@@ -90,6 +90,7 @@
   margin-inline: .5rem;
   block-size: 50vh;
   overflow-y: auto;
+  padding-block: 1rem;
 }
 
 .task_item + .task_item {

@@ -28,11 +28,12 @@ const todos = [
 
 function completedCount(arr = null) {
   if (!arr.length) return 0;
-  let count = arr.filter(task => {
-    if (task.status == 'completed') return 1;
-  }).reduce((a,b) => a + b, 0);
 
-  return count;
+  let count = arr.filter(task => {
+    if (task.status == 'completed') return task;
+  })
+
+  return count.length;
 }
 
 function App(props) {
@@ -71,7 +72,7 @@ function App(props) {
           {completeCount <= 0 && tab == 'completed' ? <span className='nothing'>Nothing done yet...</span> : task_map}
         </Tasks>
         <div className="delete_all">
-          {tab == 'completed' ? del_btn: null}
+          {tab == 'completed' && completeCount >= 1 ? del_btn: null}
         </div>
       </main>
     </div>

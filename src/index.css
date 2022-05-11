@@ -78,8 +78,17 @@
 
 .add_task {
   display: flex;
-  gap: 25px;
+  gap: clamp(10px, 25px, 25px);
+  margin-block-end: 32px;
 }
 .add_task_input {
   flex: 2;
+}
+
+.tasks {
+  list-style: none;
+}
+
+.task_item + .task_item {
+  margin-block-start: 27px;
 }

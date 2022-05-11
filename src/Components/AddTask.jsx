@@ -13,6 +13,7 @@ const Button = styled.button`
     border-radius: 12px;
     box-shadow: 0px 2px 6px rgba(127, 177, 243, 0.4);
     border: none;
+    cursor: pointer;
 `
 
 const Input = styled.input`

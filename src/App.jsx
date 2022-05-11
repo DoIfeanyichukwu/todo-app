@@ -1,7 +1,10 @@
-// import logo from './logo.svg'
+import { useState } from 'react'
 import styled from 'styled-components'
+
 import TabSection from './Components/TabSection'
 import AddTask from './Components/AddTask'
+import Tasks from './Components/Tasks'
+import Task from './Components/Task'
 
 const H1 = styled.h1`
   font-weight: 700;
@@ -17,6 +20,7 @@ const H1 = styled.h1`
 
 function App(props) {
 
+
   return (
     <div className="app">
       <header className='header'>
@@ -25,6 +29,10 @@ function App(props) {
       <main className="main">
         <TabSection />
         <AddTask />
+        <Tasks>
+          <Task task={'brush teeth'} tab="completed"/>
+          <Task task={'brush teeth'} tab="completed"/>
+        </Tasks>
       </main>
     </div>
   )

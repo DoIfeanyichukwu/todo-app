@@ -133,3 +133,20 @@
   width: 20px;
   height: 20px;
 }
+
+.footer {
+  text-align: center;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  color: #a9a9a9;
+  line-height: 17px;
+  font-size: 14px;
+  position: absolute;
+  bottom: 24px;
+  left: 0px;
+  inline-size: 100%;
+}
+
+.footer a {
+  color: inherit;
+}

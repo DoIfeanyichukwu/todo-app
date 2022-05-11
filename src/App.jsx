@@ -18,13 +18,6 @@ const H1 = styled.h1`
   text-align: center;
   justify-content: center;
 `
-const todos = [
-  {task: 'walk the dog', uuid: 'ab', status: 'active'},
-  {task: 'go shopping', uuid: 'abc', status: 'completed'},
-  {task: 'practice tests', uuid: 'abe', status: 'completed'},
-  {task: 'swimming lessons', uuid: 'abg', status: 'active'},
-
-]
 
 function completedCount(arr = null) {
   if (!arr.length) return 0;
@@ -75,6 +68,9 @@ function App(props) {
           {tab == 'completed' && completeCount >= 1 ? del_btn: null}
         </div>
       </main>
+      <footer className="footer">
+        <p>created by <a href="https://devchallenges.io/portfolio/DoIfeanyichukwu">DoIfeanyichukwu</a> - <a href="https://devchallenges.io">devChallenges.io</a></p>
+      </footer>
     </div>
   )
 }

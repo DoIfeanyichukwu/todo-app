@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { v4 as uuidv4 } from 'uuid';
 
 const Button = styled.button`
     display: block;
@@ -31,15 +32,33 @@ const Input = styled.input`
     border: 1px solid #bdbdbd;
 `
 
-const AddTask = ({handleInput}) => {
+const AddTask = ({setTasks, tasks}) => {
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    let obj = {
+      task: main_input.value,
+      status: 'active',
+      uuid: uuidv4()
+    }
+    const taskMap = Array.from(tasks)
+    taskMap.push(obj);
+    setTasks(taskMap);
+    main_input.value = '';
+  }
+
   return (
-    <section className="add_task">
-        <div className="add_task_input">
-            <label htmlFor="main_input" className='hidden'>add details</label>
-            <Input type="text" id='main_input' placeholder='add details' />
-        </div>
-        <Button>Add</Button>
-    </section>
+  <section className="add_task">
+    <div className="add_task_input">
+      <label htmlFor="main_input" className='hidden'>add details</label>
+      <Input type="text" id='main_input' placeholder='add details' />
+    </div>
+    <Button
+      onClick={handleAdd}
+    >
+      Add
+    </Button>
+  </section>
   )
 }
 

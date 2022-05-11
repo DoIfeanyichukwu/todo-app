@@ -28,7 +28,6 @@ const todos = [
 function App(props) {
 
   const [tab, setTab] = useState('');
-  const [currentTask, setCurrentTast] = useState('');
   const [tasks, setTasks] = useState(todos);
   const task_map = Array.from(tasks).map(task => {
     if (task.status.includes(tab))
@@ -46,7 +45,7 @@ function App(props) {
       </header>
       <main className="main">
         <TabSection setTab={setTab}/>
-        {tab == 'completed' ? null: <AddTask />}
+        {tab == 'completed' ? null: <AddTask tasks={tasks} setTasks={setTasks}/>}
         <Tasks>
           {task_map}
         </Tasks>

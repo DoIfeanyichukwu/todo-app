@@ -59,9 +59,9 @@ const Task = ({task, uuid, tab, strike, tasks, setTasks}) => {
     <Li data-uuid={uuid} className={`task_item ${strike ? 'strike' : null}`}>
         <Label>
             <CheckBox 
-                onClick={handleCheck}
+                onChange={handleCheck}
                 type="checkbox" 
-                defaultChecked={strike}
+                checked={strike}
             />
             {task}
         </Label>

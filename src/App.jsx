@@ -40,8 +40,10 @@ function App(props) {
   const task_map = Array.from(tasks).map(task => {
     if (task.status.includes(tab))
     {
-      if (task.status == 'completed') return <Task uuid={task.uuid} strike={true} task={task.task} key={task.uuid} tab={tab} tasks={tasks} setTasks={setTasks}/>
-      return <Task uuid={task.uuid} task={task.task} key={task.uuid} tab={tab} tasks={tasks} setTasks={setTasks}/>
+      if (task.status == 'completed') {
+        return <Task uuid={task.uuid} strike={true} task={task.task} key={task.uuid} tab={tab} tasks={tasks} setTasks={setTasks}/>
+      }
+      return <Task uuid={task.uuid} strike={false} task={task.task} key={task.uuid} tab={tab} tasks={tasks} setTasks={setTasks}/>
     }
   });
 

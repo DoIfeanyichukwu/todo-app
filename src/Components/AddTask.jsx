@@ -42,7 +42,7 @@ const AddTask = ({setTasks, tasks}) => {
       date: Date.now()
     }
     const taskMap = Array.from(tasks)
-    taskMap.push(task);
+    taskMap.unshift(task);
     setTasks(taskMap);
     localStorage.setItem('todos', JSON.stringify(taskMap));
     main_input.value = '';

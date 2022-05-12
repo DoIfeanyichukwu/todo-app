@@ -7,6 +7,10 @@ import Tasks from './Components/Tasks'
 import Task from './Components/Task'
 import { MdDeleteOutline } from 'react-icons/md'
 
+if(!localStorage.getItem('todos')) {
+  localStorage.setItem('todos',JSON.stringify([]));
+} 
+
 const H1 = styled.h1`
   font-weight: 700;
   font-family: 'Raleway', sans-serif;
@@ -32,7 +36,7 @@ function completedCount(arr = null) {
 function App(props) {
 
   const [tab, setTab] = useState('active');
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('todos')));
   const task_map = Array.from(tasks).map(task => {
     if (task.status.includes(tab))
     {
@@ -48,10 +52,14 @@ function App(props) {
     })
 
     setTasks(task_map);
+    localStorage.setItem('todos', JSON.stringify(task_map));
+
   }
 
   let completeCount = completedCount(tasks);
   let del_btn = <button onClick={handleDeleteAll} className="delete_all_btn"><MdDeleteOutline/> delete all</button>
+
+
 
   return (
     <div className="app">
@@ -74,5 +82,7 @@ function App(props) {
     </div>
   )
 }
+
+
 
 export default App

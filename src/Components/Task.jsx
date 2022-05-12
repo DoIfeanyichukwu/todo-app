@@ -51,6 +51,8 @@ const Task = ({task, uuid, tab, strike, tasks, setTasks}) => {
             });
         }
         setTasks(taskMap)
+        localStorage.setItem('todos', JSON.stringify(taskMap));
+
     }
 
   return (

@@ -25,6 +25,7 @@ const Delete = ({tasks, setTasks}) => {
             if (task.uuid != uuid) return task;
         })
         setTasks(task_map);
+        localStorage.setItem('todos', JSON.stringify(task_map));
     }
 
   return (

@@ -41,9 +41,9 @@ function App(props) {
     if (task.status.includes(tab))
     {
       if (task.status == 'completed') {
-        return <Task uuid={task.uuid} strike={true} task={task.task} key={task.uuid} tab={tab} tasks={tasks} setTasks={setTasks}/>
+        return <Task uuid={task.uuid} date={task.date} strike={true} task={task.task} key={task.uuid} tab={tab} tasks={tasks} setTasks={setTasks}/>
       }
-      return <Task uuid={task.uuid} strike={false} task={task.task} key={task.uuid} tab={tab} tasks={tasks} setTasks={setTasks}/>
+      return <Task uuid={task.uuid} date={task.date} strike={false} task={task.task} key={task.uuid} tab={tab} tasks={tasks} setTasks={setTasks}/>
     }
   });
 

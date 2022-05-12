@@ -87,7 +87,7 @@
 
 .tasks {
   list-style: none;
-  margin-inline: .5rem;
+  margin-inline: .2rem;
   block-size: 50vh;
   overflow-y: auto;
   padding-block: 1rem;

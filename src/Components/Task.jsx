@@ -1,15 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import Delete from './Delete'
+import formatDistance from 'date-fns/formatDistance'
 
 const Li = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    &.strike {
-        text-decoration: line-through;
-    }
 `
 
 const Label = styled.label`
@@ -20,6 +17,10 @@ const Label = styled.label`
     line-height: 21px;
     display: flex;
     align-items: center;
+
+    &.strike {
+        text-decoration: line-through;
+    }
 `
 
 const CheckBox = styled.input`
@@ -29,10 +30,22 @@ const CheckBox = styled.input`
     border-radius: 4px;
     margin-inline-end: 7px;
 `
+const Span = styled.span`
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    font-style: italic;
+    font-weight: 400;
+    color: #828282;
+    font-size: 8px;
+
+    @media (min-width: 500px) {
+        font-size: 14px;
+    }
+`
 
 
-
-const Task = ({task, uuid, tab, strike, tasks, setTasks}) => {
+const Task = ({task, date, uuid, tab, strike, tasks, setTasks}) => {
 
     const handleCheck = (e) => {
         let taskMap;
@@ -56,8 +69,8 @@ const Task = ({task, uuid, tab, strike, tasks, setTasks}) => {
     }
 
   return (
-    <Li data-uuid={uuid} className={`task_item ${strike ? 'strike' : null}`}>
-        <Label>
+    <Li data-uuid={uuid} className='task_item'>
+        <Label className={strike ? 'strike': null}>
             <CheckBox 
                 onChange={handleCheck}
                 type="checkbox" 
@@ -65,6 +78,8 @@ const Task = ({task, uuid, tab, strike, tasks, setTasks}) => {
             />
             {task}
         </Label>
+
+        <Span>{formatDistance(new Date(date), Date.now()) + ' ago'}</Span>
 
         <Delete tasks={tasks} setTasks={setTasks}/>
         

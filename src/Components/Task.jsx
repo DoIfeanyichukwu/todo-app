@@ -37,10 +37,12 @@ const Span = styled.span`
     font-style: italic;
     font-weight: 400;
     color: #828282;
-    font-size: 8px;
+    font-size: 10px;
+    letter-spacing: -.6px;
 
     @media (min-width: 500px) {
         font-size: 14px;
+        letter-spacing: none;
     }
 `
 
